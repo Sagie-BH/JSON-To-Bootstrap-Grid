@@ -89,21 +89,69 @@ grade.addEventListener('focusout', () => {
     } else {
         confirmElement(grade);
     }
-
 })
 validateForm.addEventListener('focusout', () => {
     btnSubmit.classList.remove('myDangerStyle');
+    btnSubmit.classList.remove('my-btn-success');
     btnSubmit.classList.add('my-btn-start');
 })
+
+let objArr = [];
+let jsonObj;
+
+addObjToArr = () => {
+    jsonObj = {
+        id: id.value,
+        fullName: fullName.value,
+        email: email.value,
+        course: course.value,
+        grade: grade.value,
+        active: active.checked,
+        date: date.value
+    };
+
+    jsonStringData = JSON.stringify(jsonObj);
+    objArr.push(jsonStringData);
+}
+createJsonTable = () => {
+
+    var headers = Object.keys(jsonObj)
+
+    var table = document.createElement('table');
+    table.setAttribute('id', 'jsonTable');
+    table.classList.add('table');
+    var tr = table.insertRow(-1);
+
+    for (var i = 0; i < headers.length; i++) {
+        var th = document.createElement("th");
+        th.classList.add('col');
+        th.innerHTML = headers[i].charAt(0).toUpperCase() + headers[i].slice(1);
+        tr.appendChild(th);
+    }
+
+    var divContainer = document.getElementById("objDataTableDiv");
+    divContainer.innerHTML = "";
+    divContainer.appendChild(table);
+}
+addObjToTable = () => {
+    document.getElementById('jsonTable').innerHTML += `<tr>
+    <td> ${jsonObj.id} </td>
+    <td> ${jsonObj.fullName} </td>
+    <td> ${jsonObj.email} </td>
+    <td> ${jsonObj.course} </td>
+    <td> ${jsonObj.grade} </td>
+    <td> ${jsonObj.active} </td>
+    <td> ${jsonObj.date} </td>
+    </tr>`
+}
+
 validateForm.addEventListener('submit', (e) => {
-
-    // checkEmptyInput();
-
     if (!valid) {
         e.preventDefault();
         btnSubmit.classList.remove('my-btn-start');
         btnSubmit.classList.add('myDangerStyle');
     } else {
+        addObjToArr();
         Array.from(inputAreas).forEach((input) => {
             input.classList.remove('is-valid');
             input.value = '';
@@ -111,10 +159,9 @@ validateForm.addEventListener('submit', (e) => {
         active.checked = false;
         btnSubmit.classList.remove('my-btn-start')
         btnSubmit.classList.add('my-btn-success');
-
-
-
-        // addObjToArr();
-        // CreateTable();
+        if (document.getElementById('jsonTable') == null) {
+            createJsonTable();
+        }
+        addObjToTable();
     }
 });
