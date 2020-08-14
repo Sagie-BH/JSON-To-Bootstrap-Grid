@@ -13,52 +13,108 @@ const validateForm = document.getElementById('validateForm');
 
 var valid = false;
 
+confirmElement = (element) => {
+    element.setCustomValidity('');
+    element.classList.remove('is-invalid');
+    element.classList.add('is-valid');
+    valid = true;
+};
+rejectElement = (element, poppinMessage) => {
+    element.classList.remove('is-valid');
+    element.classList.add('is-invalid');
+    element.setCustomValidity(poppinMessage);
+    element.reportValidity();
+    valid = false;
+};
 
+// checkEmptyInput = () => {
+//     Array.from(inputAreas).forEach((input) => {
+//         if (input.innerText == "" || input.selectedOptions[0]) {
+//             rejectElement(input, "Please Fill Out Field")
+//             btnSubmit.classList.remove('my-btn-start');
+//             btnSubmit.classList.add('myDangerStyle');
+//         }
+//     })
+// };
+
+
+id.addEventListener('focusout', () => {
+    if (isNaN(id.value)) {
+        rejectElement(id, 'ID Must Be A Number');
+
+    } else if (id.value.length == 8 || id.value.length == 9) {
+        confirmElement(id);
+
+    } else {
+        rejectElement(id, "Please Enter A Valid ID");
+    }
+});
+
+fullName.addEventListener('focusout', () => {
+    if (fullName.value.length > 3) {
+        confirmElement(fullName);
+    } else {
+        rejectElement(fullName, "Please Enter A Valid Name");
+    }
+});
+
+email.addEventListener('focusout', () => {
+    const expression = /\S+@\S+/;
+    if (expression.test(email.value.toLowerCase())) {
+        confirmElement(email);
+    } else {
+        rejectElement(email, 'Please Enter A Valid Email Adress')
+    }
+});
+
+course.addEventListener('change', () => {
+    confirmElement(course);
+})
+
+date.addEventListener('change', () => {
+    confirmElement(date);
+})
+
+active.addEventListener('change', () => {
+    if (active.checked) {
+        confirmElement(active);
+    } else {
+        rejectElement(active, 'Please Check Box');
+    }
+})
+
+grade.addEventListener('focusout', () => {
+    if (grade.value == 0) {
+        rejectElement(grade, 'How Did You Get 0  /:')
+    } else {
+        confirmElement(grade);
+    }
+
+})
+validateForm.addEventListener('focusout', () => {
+    btnSubmit.classList.remove('myDangerStyle');
+    btnSubmit.classList.add('my-btn-start');
+})
 validateForm.addEventListener('submit', (e) => {
 
-  if (isNaN(id.value)) {
-    id.setCustomValidity('ID Must Be A Number');
-    id.reportValidity();
-  }
-  else if (id.value.length == 8 || id.value.length == 9) {
-    id.setCustomValidity('');
-    valid = true;
-  } else {
-    id.setCustomValidity('"Please Enter A Valid ID"');
-    id.reportValidity();
-  }
+    // checkEmptyInput();
 
-  if (fullName.value.length > 3) {
-    fullName.setCustomValidity('');
-    valid = true;
-  } else {
-    fullName.setCustomValidity("Please Enter A Valid Name")
-    fullName.reportValidity();
-  }
+    if (!valid) {
+        e.preventDefault();
+        btnSubmit.classList.remove('my-btn-start');
+        btnSubmit.classList.add('myDangerStyle');
+    } else {
+        Array.from(inputAreas).forEach((input) => {
+            input.classList.remove('is-valid');
+            input.value = '';
+        })
+        active.checked = false;
+        btnSubmit.classList.remove('my-btn-start')
+        btnSubmit.classList.add('my-btn-success');
 
-  if (!valid) {
-    e.preventDefault();
-    validateForm.classList.remove("was-validated");
-  } else {
-    btnSubmit.classList.add('btn-succsess');
-    // addObjToArr();
-    // CreateTable();
-  }
+
+
+        // addObjToArr();
+        // CreateTable();
+    }
 });
-(function () {
-    'use strict';
-    btnSubmit.addEventListener('click', function () {
-      // Get the forms we want to add validation styles to
-      var forms = document.getElementsByClassName('needs-validation');
-      // Loop over them and prevent submission
-      var validation = Array.prototype.filter.call(forms, function (form) {
-        form.addEventListener('submit', function (event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            // event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
-    }, false);
-  })();

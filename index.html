@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
     <title>Bootstrap Json</title>
@@ -30,15 +29,13 @@
         <br />
 
         <div id='input-container'>
-            <form class="needs-validation col-lg-4 col=md-4 offset-xl-3 offset-md-0 offset-lg-2 offset-2 offset-sm-0"
-                id="validateForm" novalidate onsubmit="return false">
+            <form class="needs-validation col-lg-4 col=md-4 offset-xl-3 offset-md-0 offset-lg-2 offset-2 offset-sm-0" id="validateForm" novalidate onsubmit="return false">
                 <div class="row align-items-center">
 
 
                     <div class="form-group col-10 col-sm-6 col-md-4 col-lg-12">
                         <label for="objId" class="control-label">ID</label>
-                        <input class="form-control userInput" type="text" id="objId" name="id" placeholder="ID"
-                            required />
+                        <input class="form-control userInput" type="text" id="objId" placeholder="ID" />
                         <div class="valid-feedback">
                             Looks good!
                         </div>
@@ -52,34 +49,32 @@
                     <div class="form-group col-10 col-sm-6 col-md-4 col-lg-12">
                         <label for="objName" class="control-label">Full Name</label>
 
-                        <input class="form-control userInput" type="text" id="objName" 
-                            placeholder="First And Last Name" required />
+                        <input class="form-control userInput" type="text" id="objName" placeholder="First And Last Name" />
 
-                            <div class="valid-feedback">
-                                Nice...!
-                            </div>
+                        <div class="valid-feedback">
+                            Nice...!
+                        </div>
 
-                            <div class="invalid-feedback">
-                                Please submit a valid full name.
-                            </div>
+                        <div class="invalid-feedback">
+                            Please submit a valid full name.
+                        </div>
                     </div>
 
 
                     <div class="form-group col-10 col-sm-6 col-md-4 col-lg-12">
                         <label for="objEmail" class="control-label">Email</label>
-                        <input class="form-control userInput" type="email" id="objEmail" name="email"
-                            placeholder="Email address" required />
-                            <div class="valid-feedback">
-                                Now that's an email address
-                            </div>
-                            <div class="invalid-feedback">
-                                Please submit a valid email.
-                            </div>
+                        <input class="form-control userInput" type="email" id="objEmail" placeholder="Email address" />
+                        <div class="valid-feedback">
+                            Now that's an email address
+                        </div>
+                        <div class="invalid-feedback">
+                            Please submit a valid email.
+                        </div>
                     </div>
 
 
                     <div class="col-10 col-sm-6 col-md-4 col-lg-12" id="courses-selection">
-                        <select class="form-control userInput" id="objCourse" name="courses" required>
+                        <select class="form-control userInput" id="objCourse">
                             <option value="" disabled selected>Courses...</option>
                             <option>C#</option>
                             <option>JS</option>
@@ -96,15 +91,14 @@
                     </div>
 
 
-                    <div class="form-group col-10 col-sm-6 col-md-4 col-lg-12" id="objGrade">
-                        <input class="form-control userInput" type="number" placeholder="Grade" min="0" max="100"
-                            required id="example-number-input" name="grade">
-                            <div class="valid-feedback">
-                                Looks Ok!
-                            </div>
-                            <div class="invalid-feedback">
-                                Please Choose a grade.
-                            </div>
+                    <div class="form-group col-10 col-sm-6 col-md-4 col-lg-12">
+                        <input class="form-control userInput" type="number" placeholder="Grade" min="0" max="100" id="objGrade">
+                        <div class="valid-feedback">
+                            Looks Ok!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please Choose a grade.
+                        </div>
                     </div>
 
 
@@ -112,33 +106,31 @@
                         <label class="form-check-label" for="isActive">
                             Active?
                         </label>
-                        <input class="form-check-input userInput" type="checkbox" value="" id="isActive" name="isActive"
-                            required>
-                            <div class="valid-feedback">
-                                Checked!
-                            </div>
-                            <div class="invalid-feedback">
-                                Please Check the box.
-                            </div>
+                        <input class="form-check-input userInput" type="checkbox" value="" id="isActive">
+                        <div class="valid-feedback">
+                            Checked!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please Check the box.
+                        </div>
                     </div>
 
 
                     <div class="form-group col-10  col-10 col-sm-6 col-md-4 col-lg-12" id="inputDate">
-                        <input class="form-control userInput" type="datetime-local" id="datetime-input" name="date"
-                            required>
-                            <div class="valid-feedback">
-                                Great!
-                            </div>
-                            <div class="invalid-feedback">
-                                Please Choose a date.
-                            </div>
+                        <input class="form-control userInput" type="datetime-local" id="datetime-input">
+                        <div class="valid-feedback">
+                            Great!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please Choose a date.
+                        </div>
                     </div>
 
 
-                    <div class="col-10 col-sm-6 col-md-4 offset-md-4 col-lg-12 offset-lg-0" id="btnSubmit">
-                        <button type="submit" class="btn btn-primary" id="btnSubmit">Submit</button>
+                    <div class="col-10 col-sm-6 col-md-4 offset-md-4 col-lg-12 offset-lg-0">
+                        <button type="submit" class="mybtn my-btn-start" id="btnSubmit">Submit</button>
                     </div>
-                    
+
                 </div>
             </form>
             <div class="col-lg-4 col-md-4" id="objDataTable"></div>
